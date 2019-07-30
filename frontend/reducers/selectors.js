@@ -4,4 +4,12 @@ export const allTodos = ({ todos }) => {
   });
 }
 
-window.allTodos = allTodos;
+export const stepsByTodoId = ({ steps }, todoId) => {
+  let stepsArr = [];
+  for (let id in steps) {
+    if (steps[id].todo_id == todoId) {
+      stepsArr.push(steps[id])
+    }
+  }
+  return stepsArr;
+}
