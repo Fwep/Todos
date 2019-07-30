@@ -40,6 +40,7 @@ class TodoForm extends React.Component {
           placeholder="Walk the dog"
           value={this.state.title}
           onChange={this.handleChange}
+          required
         />
 
         <label htmlFor="todo-body">Body:</label>
@@ -49,6 +50,7 @@ class TodoForm extends React.Component {
           placeholder="Walk Loki at Gellert Park"
           value={this.state.body}
           onChange={this.handleChange}
+          required
         />
 
         <input type="submit" value="Create Todo" />
