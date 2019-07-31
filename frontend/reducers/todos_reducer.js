@@ -25,15 +25,12 @@ const todosReducer = (state = initialState, action) => {
   let newState = {};
   switch(action.type) {
     case RECEIVE_TODOS:
-      let todos = {};
       action.todos.map((todo) => {
-        todos[todo.id] = todo;
+        newState[todo.id] = todo;
       })
-      newState = merge({}, todos);
       return newState;
     case RECEIVE_TODO:
-      newState = merge({}, state, {[action.todo.id]: action.todo});
-      return newState;
+     return merge({}, state, {[action.todo.id]: action.todo});
     case REMOVE_TODO:
       newState = merge({}, initialState);
       let {id} = action;
