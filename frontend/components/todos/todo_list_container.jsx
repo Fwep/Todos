@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import TodoList from './todo_list';
 import { allTodos } from '../../reducers/selectors';
-import { receiveTodo, removeTodo } from '../../actions/todo_actions';
+import { receiveTodo } from '../../actions/todo_actions';
 
 const mSP = (state) => ({
   todos: allTodos(state)
@@ -9,7 +9,6 @@ const mSP = (state) => ({
 
 const mDP = (dispatch) => ({
   receiveTodo: (todo) => dispatch(receiveTodo(todo)),
-  removeTodo: (id) => dispatch(removeTodo(id))
 })
 
 export default connect(mSP, mDP)(TodoList);
