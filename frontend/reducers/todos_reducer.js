@@ -16,13 +16,13 @@ const initialState = {
     id: 2,
     title: 'wash dog',
     body: 'with shampoo',
-    done: true
+    done: false
   },
 };
 
 const todosReducer = (state = initialState, action) => {
   Object.freeze(state);
-  let newState;
+  let newState = {};
   switch(action.type) {
     case RECEIVE_TODOS:
       let todos = {};
@@ -32,7 +32,7 @@ const todosReducer = (state = initialState, action) => {
       newState = merge({}, todos);
       return newState;
     case RECEIVE_TODO:
-      newState = merge({}, initialState, {[action.todo.id]: action.todo});
+      newState = merge({}, state, {[action.todo.id]: action.todo});
       return newState;
     case REMOVE_TODO:
       newState = merge({}, initialState);
