@@ -10,6 +10,7 @@ class TodoListItem extends React.Component {
     }
 
     this.toggleDetail = this.toggleDetail.bind(this);
+    this.toggleTodo = this.toggleTodo.bind(this);
   }
 
   toggleDetail(e) {
@@ -17,15 +18,22 @@ class TodoListItem extends React.Component {
     this.setState(merge({}, this.state, {detail: !this.state.detail}));
   }
 
+  toggleTodo(e) {
+    e.preventDefault();
+    let toggledTodo = merge({}, this.props.todo, {done: !this.props.todo.done})
+
+    this.props.receiveTodo(toggledTodo);
+  }
+
   render() {
-    let {receiveTodo, todo} = this.props
+    let { todo } = this.props;
     return (
-      <li onClick={this.toggleDetail}>
-        <h3>{todo.title}</h3>
-        <button onClick={() => receiveTodo(Object.assign(todo, { done: !todo.done }))}>{todo.done ? 'Undo' : 'Done'}</button>
+      <li>
+        <h2><a onClick={this.toggleDetail}>{todo.title}</a></h2>
+        <button onClick={this.toggleTodo}>{todo.done ? 'Undo' : 'Done'}</button>
         {this.state.detail && <TodoDetailViewContainer todo={todo} />}
       </li>
-    )
+    );
   }
 }
 
