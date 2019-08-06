@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "start",
+    "postinstall": "npm run start",
     "start": "webpack --mode=development --watch"
   },
   "keywords": [],
